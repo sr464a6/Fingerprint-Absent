@@ -6,302 +6,180 @@
 
     <title>Enroll Siswa - Sistem Absensi</title>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
     <!-- Bootstrap 5 -->
-    <link
-        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-        rel="stylesheet"
-    >
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Bootstrap Icons -->
-    <link
-        rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
-    >
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
-    <style>
-        body {
-            background-color: #f4f6f9;
-            font-family: Arial, Helvetica, sans-serif;
-        }
-
-        .dashboard-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 30px;
-        }
-
-        .page-header {
-            margin-bottom: 25px;
-        }
-
-        .page-header h1 {
-            font-size: 28px;
-            font-weight: 600;
-            margin-bottom: 5px;
-        }
-
-        .page-header p {
-            color: #6c757d;
-            margin: 0;
-        }
-
-        .card {
-            border: none;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-            margin-bottom: 25px;
-        }
-
-        .card-header {
-            background-color: #fff;
-            border-bottom: 1px solid #dee2e6;
-            padding: 18px 20px;
-        }
-
-        .card-title {
-            font-size: 18px;
-            font-weight: 600;
-            margin: 0;
-        }
-
-        .card-body {
-            padding: 25px;
-        }
-
-        .card-footer {
-            background-color: #fff;
-            border-top: 1px solid #dee2e6;
-            padding: 15px 25px;
-        }
-
-        .form-label {
-            font-weight: 500;
-        }
-
-        .form-control {
-            padding: 10px 12px;
-        }
-
-        .fingerprint-icon {
-            font-size: 70px;
-            color: #0d6efd;
-            margin-bottom: 15px;
-        }
-
-        .instruction-list li {
-            margin-bottom: 12px;
-        }
-
-        #enrollStatus {
-            display: none;
-        }
-
-        .processing-animation {
-            display: inline-block;
-        }
-
-        .success-icon {
-            font-size: 45px;
-            margin-bottom: 10px;
-        }
-
-        @media (max-width: 768px) {
-            .dashboard-container {
-                padding: 15px;
-            }
-
-            .page-header h1 {
-                font-size: 24px;
-            }
-
-            .card-body {
-                padding: 20px;
-            }
-        }
-    </style>
+    <!-- Tampilan -->
+    <link rel="stylesheet" href="assets/css/app.css">
 </head>
 
 <body>
 
-<div class="dashboard-container">
+    <aside class="side">
 
-    <!-- Header -->
-    <div class="page-header">
-        <h1>Enroll Siswa Baru</h1>
-        <p>Pendaftaran siswa dan fingerprint</p>
-    </div>
+        <a href="index.html" class="brand">
+            <i class="bi bi-fingerprint"></i>
+            <span><b>Absensi</b> Siswa</span>
+        </a>
 
-    <div class="row">
+        <nav class="side-nav">
+            <a href="index.html">
+                <i class="bi bi-speedometer2"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="enroll.html" class="active">
+                <i class="bi bi-fingerprint"></i>
+                <span>Enroll Siswa</span>
+            </a>
+            <a href="siswa.html">
+                <i class="bi bi-people"></i>
+                <span>Daftar Siswa</span>
+            </a>
+            <a href="absensi.html">
+                <i class="bi bi-clipboard-check"></i>
+                <span>Absensi</span>
+            </a>
+            <a href="izin.html">
+                <i class="bi bi-file-earmark-medical"></i>
+                <span>Form Izin/Sakit</span>
+            </a>
+        </nav>
 
-        <!-- FORM ENROLL -->
-        <div class="col-md-6">
+    </aside>
 
-            <div class="card">
 
-                <div class="card-header">
-                    <h3 class="card-title">
-                        Form Enroll Siswa
-                    </h3>
+    <div class="shell">
+
+        <header class="topbar">
+            <div class="topbar-title">Sistem Absensi Siswa</div>
+            <div class="user-info">
+                <i class="bi bi-person-circle"></i>
+                Administrator
+            </div>
+        </header>
+
+        <main class="page">
+
+            <div class="page-head">
+                <h1>Enroll Siswa Baru</h1>
+                <p>Pendaftaran siswa dan fingerprint</p>
+            </div>
+
+            <div class="split">
+
+                <!-- FORM ENROLL -->
+                <div class="card">
+
+                    <div class="card-header">
+                        <h3 class="card-title">Form Enroll Siswa</h3>
+                    </div>
+
+                    <form id="enrollForm">
+
+                        <div class="card-body">
+
+                            <div class="mb-3">
+                                <label class="form-label">
+                                    Nama Siswa
+                                    <span class="text-danger">*</span>
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="nama"
+                                    class="form-control"
+                                    placeholder="Masukkan nama siswa"
+                                    required
+                                >
+
+                                <small class="form-text text-muted">
+                                    Nama akan otomatis menjadi huruf kapital
+                                </small>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">
+                                    NISN
+                                    <span class="text-danger">*</span>
+                                </label>
+
+                                <input
+                                    type="number"
+                                    id="nisn"
+                                    class="form-control"
+                                    placeholder="Masukkan NISN"
+                                    required
+                                >
+                            </div>
+
+                            <div class="alert alert-info mb-3">
+                                <i class="bi bi-info-circle"></i>
+                                Setelah klik tombol <strong>Enroll</strong>,
+                                silakan tempelkan jari siswa pada sensor fingerprint.
+                            </div>
+
+                            <div id="enrollStatus" class="alert" style="display:none"></div>
+
+                        </div>
+
+                        <div class="card-footer">
+
+                            <button type="submit" class="btn btn-primary" id="btnEnroll">
+                                <i class="bi bi-fingerprint"></i>
+                                Enroll
+                            </button>
+
+                            <button type="button" class="btn btn-secondary" id="btnReset">
+                                <i class="bi bi-arrow-clockwise"></i>
+                                Reset
+                            </button>
+
+                        </div>
+
+                    </form>
+
                 </div>
 
-                <form id="enrollForm">
+
+                <!-- PETUNJUK -->
+                <div class="card">
+
+                    <div class="card-header">
+                        <h3 class="card-title">Petunjuk Enroll</h3>
+                    </div>
 
                     <div class="card-body">
 
-                        <!-- Nama -->
-                        <div class="mb-3">
-
-                            <label class="form-label">
-                                Nama Siswa
-                                <span class="text-danger">*</span>
-                            </label>
-
-                            <input
-                                type="text"
-                                id="nama"
-                                class="form-control"
-                                placeholder="Masukkan nama siswa"
-                                required
-                            >
-
-                            <small class="form-text text-muted">
-                                Nama akan otomatis menjadi huruf kapital
-                            </small>
-
+                        <div class="help-head">
+                            <span class="menu-icon"><i class="bi bi-fingerprint"></i></span>
+                            <div>
+                                <h5>Pendaftaran Fingerprint</h5>
+                                <p class="text-muted">Ikuti langkah-langkah berikut untuk mendaftarkan siswa.</p>
+                            </div>
                         </div>
 
-                        <!-- NISN -->
-                        <div class="mb-3">
+                        <ol class="steps">
+                            <li><span>Isi nama siswa <strong>(akan otomatis kapital)</strong></span></li>
+                            <li><span>Isi NISN siswa <strong>(angka)</strong></span></li>
+                            <li><span>Klik tombol <strong>Enroll</strong></span></li>
+                            <li><span>Tunggu hingga muncul instruksi</span></li>
+                            <li><span>Tempelkan jari pada sensor fingerprint</span></li>
+                            <li><span>Ikuti instruksi hingga proses selesai</span></li>
+                        </ol>
 
-                            <label class="form-label">
-                                NISN
-                                <span class="text-danger">*</span>
-                            </label>
-
-                            <input
-                                type="number"
-                                id="nisn"
-                                class="form-control"
-                                placeholder="Masukkan NISN"
-                                required
-                            >
-
+                        <div class="alert alert-warning mb-0">
+                            <i class="bi bi-exclamation-triangle"></i>
+                            <strong>Penting!</strong>
+                            Pastikan perangkat fingerprint sudah menyala
+                            dan terhubung dengan sistem.
                         </div>
-
-                        <!-- Informasi -->
-                        <div class="alert alert-info">
-
-                            <i class="bi bi-info-circle"></i>
-
-                            Setelah klik tombol <strong>Enroll</strong>,
-                            silakan tempelkan jari siswa pada sensor fingerprint.
-
-                        </div>
-
-                        <!-- Status -->
-                        <div
-                            id="enrollStatus"
-                            class="alert"
-                        ></div>
-
-                    </div>
-
-                    <div class="card-footer">
-
-                        <button
-                            type="submit"
-                            class="btn btn-primary"
-                            id="btnEnroll"
-                        >
-                            <i class="bi bi-fingerprint"></i>
-                            Enroll
-                        </button>
-
-                        <button
-                            type="button"
-                            class="btn btn-secondary"
-                            id="btnReset"
-                        >
-                            <i class="bi bi-arrow-clockwise"></i>
-                            Reset
-                        </button>
-
-                    </div>
-
-                </form>
-
-            </div>
-
-        </div>
-
-
-        <!-- PETUNJUK -->
-        <div class="col-md-6">
-
-            <div class="card">
-
-                <div class="card-header">
-
-                    <h3 class="card-title">
-                        Petunjuk Enroll
-                    </h3>
-
-                </div>
-
-                <div class="card-body">
-
-                    <div class="text-center mb-4">
-
-                        <i class="bi bi-fingerprint fingerprint-icon"></i>
-
-                        <h5>
-                            Pendaftaran Fingerprint
-                        </h5>
-
-                        <p class="text-muted">
-                            Ikuti langkah-langkah berikut untuk mendaftarkan siswa.
-                        </p>
-
-                    </div>
-
-                    <ol class="instruction-list">
-
-                        <li>
-                            Isi nama siswa
-                            <strong>(akan otomatis kapital)</strong>
-                        </li>
-
-                        <li>
-                            Isi NISN siswa
-                            <strong>(angka)</strong>
-                        </li>
-
-                        <li>
-                            Klik tombol <strong>Enroll</strong>
-                        </li>
-
-                        <li>
-                            Tunggu hingga muncul instruksi
-                        </li>
-
-                        <li>
-                            Tempelkan jari pada sensor fingerprint
-                        </li>
-
-                        <li>
-                            Ikuti instruksi hingga proses selesai
-                        </li>
-
-                    </ol>
-
-                    <div class="alert alert-warning mt-3">
-
-                        <i class="bi bi-exclamation-triangle"></i>
-
-                        <strong>Penting!</strong>
-
-                        Pastikan perangkat fingerprint sudah menyala
-                        dan terhubung dengan sistem.
 
                     </div>
 
@@ -309,12 +187,14 @@
 
             </div>
 
-        </div>
+        </main>
+
+        <footer class="foot">
+            <strong>Copyright &copy; 2026 Absensi Siswa.</strong>
+            All rights reserved.
+        </footer>
 
     </div>
-
-</div>
-
 
 <script>
 
