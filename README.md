@@ -6,12 +6,10 @@
 
 <br/>
 
-<!-- ANIMASI HARDWARE & PROSES ABSENSI FINGERPRINT -->
 <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=18&duration=2800&pause=1000&color=3B82F6&background=0F172A&center=true&vCenter=true&width=680&height=65&lines=%5BESP32%5D+Sensor+R307+Standby...+%F0%9F%91%86;%5BSCAN%5D+Verifying+Fingerprint+ID+%2301...+%F0%9F%94%8D;%5BAPI%5D+POST+%2Fapi%2Ffingerprint%2Fscan+-%3E+200+OK+%E2%9C%85;%5BLCD+16x2%5D+Absensi+Berhasil+Tercatat!+%F0%9F%8E%93" alt="Animasi Proses Absensi Fingerprint ESP32" />
 
 <br/><br/>
 
-<!-- TECH STACK (LOGO SAJA) -->
 <p align="center">
   <img src="https://skillicons.dev/icons?i=laravel,php,mysql,bootstrap,jquery,arduino,git,github" alt="Tech Stack Logos" />
 </p>
